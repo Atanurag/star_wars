@@ -10,7 +10,6 @@ import {
 } from '@mantine/core';
 import UserProfile from '../../components/userInfo/UserProfile';
 
-// Types
 interface Film {
   uid: string;
   description: string;
