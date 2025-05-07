@@ -247,16 +247,29 @@ const Detail: FC = () => {
                             <Text size="sm"><b>Director:</b> {data.director}</Text>
                             <Text size="sm"><b>Producer:</b> {data.producer}</Text>
                             <Text size="sm"><b>Release Date:</b> {new Date(data.releaseDate).toDateString()}</Text>
-                            <Text size="sm"><b>Starships</b> {data?.starships?.map((e, i) => {
-                                return (<><span style={{ cursor: 'pointer' }} onClick={() => {
+                            <Text size="sm">
+                                <b>Starships</b>{" "}
+                                {data?.starships?.map((e, i) => {
                                     const parts = e?.split('/').filter(Boolean);
-                                    if (!parts[3] || !parts[4]) return;
-                                    const categoryToView = parts[3];
-                                    const categoryId = parts[4]
-                                    const path = `internal-detail/${categoryToView}/${categoryId}`;
-                                    navigate(path);
-                                }}> ship-{e?.split('/').filter(Boolean)[4]} |</span></>)
-                            })}</Text>
+                                    const categoryId = parts[4];
+
+                                    return (
+                                        <span
+                                            key={`starship-${categoryId || i}`}
+                                            style={{ cursor: 'pointer' }}
+                                            onClick={() => {
+                                                if (!parts[3] || !parts[4]) return;
+                                                const categoryToView = parts[3];
+                                                const path = `internal-detail/${categoryToView}/${categoryId}`;
+                                                navigate(path);
+                                            }}
+                                        >
+                                            ship-{categoryId || i} |
+                                        </span>
+                                    );
+                                })}
+                            </Text>
+
 
                         </Stack>
 
@@ -315,10 +328,12 @@ const Detail: FC = () => {
                             <Text size="sm"><b>Eye Colors:</b> {data.eye_colors}</Text>
                             <Text size="sm"><b>Hair Colors:</b> {data.hair_colors}</Text>
                             <Text size="sm"><b>Language:</b> {data.language}</Text>
-                            <Text size="sm"><b>Peoples:</b> {data?.peoples?.map((e) => {
+                            <Text size="sm"><b>Peoples:</b> {data?.peoples?.map((e,i) => {
                                 return (
                                     <>
-                                        <span style={{ cursor: 'pointer' }} onClick={() => {
+                                        <span 
+                                        key={`agent-${i}`}
+                                        style={{ cursor: 'pointer' }} onClick={() => {
                                             const parts = e?.split('/').filter(Boolean);
                                             if (!parts[3] || !parts[4]) return;
                                             const categoryToView = parts[3];
@@ -401,10 +416,12 @@ const Detail: FC = () => {
                             <Text size="sm"><b>Passengers:</b> {data.passengers}</Text>
                             <Text size="sm"><b>Cargo Capacity:</b> {data.cargo_capacity} kg</Text>
                             <Text size="sm"><b>Consumables:</b> {data.consumables}</Text>
-                            <Text size="sm"><b>Films:</b> {data?.films?.map((e) => {
+                            <Text size="sm"><b>Films:</b> {data?.films?.map((e,i) => {
                                 return (
                                     <>
-                                        <span style={{ cursor: 'pointer' }} onClick={() => {
+                                        <span 
+                                        key={`film-${i}`}
+                                         style={{ cursor: 'pointer' }} onClick={() => {
                                             const parts = e?.split('/').filter(Boolean);
                                             if (!parts[3] || !parts[4]) return;
                                             const categoryToView = parts[3];
@@ -452,10 +469,12 @@ const Detail: FC = () => {
                             <Text size="sm"><b>Passengers:</b> {data.passengers}</Text>
                             <Text size="sm"><b>Cargo Capacity:</b> {data.cargo_capacity} kg</Text>
                             <Text size="sm"><b>Consumables:</b> {data.consumables}</Text>
-                            <Text size="sm"><b>Films:</b> {data?.films?.map((e) => {
+                            <Text size="sm"><b>Films:</b> {data?.films?.map((e,i) => {
                                 return (
                                     <>
-                                        <span style={{ cursor: 'pointer' }} onClick={() => {
+                                        <span 
+                                        key={`film-${i}`}
+                                        style={{ cursor: 'pointer' }} onClick={() => {
                                             const parts = e?.split('/').filter(Boolean);
                                             if (!parts[3] || !parts[4]) return;
                                             const categoryToView = parts[3];
